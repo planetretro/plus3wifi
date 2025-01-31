@@ -1,0 +1,7 @@
+project.sld.txt
+*.lst
+*.nex
+symbols.txt
+tags
+.vimsession
+build-disk.sh
