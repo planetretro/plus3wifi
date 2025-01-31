@@ -1,6 +1,13 @@
-Source code for the software will be here soon!
+# +3WiFi card software
 
-In the meantime, please see the wiki for the +3WiFi card user manual:
+This repository contains the software for the +3WiFi card.
+
+The following tools are required to build the release / debug disks:
+
+https://github.com/cpcsdk/idsk
+https://github.com/z00m128/zmakebas
+
+Please see the wiki for the card user manual:
 
 https://github.com/planetretro/plus3wifi/wiki/User-Manual
 
