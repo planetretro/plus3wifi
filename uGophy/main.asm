@@ -40,8 +40,6 @@ zx48start:
     call loadWiFiConfig
     call initWifi
 
-    call wSec
-
     ; Clear last key
     xor a
     ld (23560), a

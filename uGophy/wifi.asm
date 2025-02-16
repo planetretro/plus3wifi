@@ -175,11 +175,6 @@ loadWiFiConfig:
     ld      hl, ssid
     call    fread
     call    fclose
-
-    ei
-    ld      b, 150
-1:  halt
-    djnz    1B
     ENDIF
 
     IFDEF   ESXDOS
