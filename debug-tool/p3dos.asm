@@ -41,36 +41,36 @@ initDos:
 fopen:
     ld b, 1
     push hl
-.l1 
+.l1
     inc hl ; Anyway filename more than one symbol
     ld a, (hl)
-    and a 
+    and a
     jr nz, .l1
     ld a, #ff : ld (hl), a
     pop hl
     ld ix, DOS_OPEN : call plus3dos
     ret c
     jp error
-    
+
 ; C - page
 ; DE - byte count
 ; HL - Address
 fread:
     ld b, 1 : ld ix, DOS_READ
     jp plus3dos
-     
+
 ; C - page
 ; DE - Bytes
 ; HL - Buffer
-fwrite: 
+fwrite:
     ld b, 1 : ld ix, DOS_WRITE
     jp plus3dos
-    
+
 fclose:
     ld b, 1 : ld ix, DOS_CLOSE
-    call plus3dos 
-    ld ix, DOS_MOTOR_OFF 
-    jp plus3dos 
+    call plus3dos
+    ld ix, DOS_MOTOR_OFF
+    jp plus3dos
 
 error:
     ld a, 2
@@ -78,34 +78,34 @@ error:
     ld hl, dos_error
     jp putStringZ
 
-setDOS: 
+setDOS:
     di
-	push	bc
-	push	af
-	ld	bc, CMR0
-	ld	a,(bankm)
-	res	4,a
-	or	7
-	ld	(bankm),a
-	out	(c),a
-	pop	af
-	pop	bc
-	ret
+    push    bc
+    push    af
+    ld  bc, CMR0
+    ld  a,(bankm)
+    res 4,a
+    or  7
+    ld  (bankm),a
+    out (c),a
+    pop af
+    pop bc
+    ret
 
 plus3dos:
-	call	setDOS
-	ld	(adds+1),ix
-adds:	call	0
+    call    setDOS
+    ld  (adds+1),ix
+adds:   call    0
 setBASIC:
-	di
-	push	af
-	ld	bc, CMR0
-	ld	a,(bankm)
-	set	4,a
-	and	#0f8
-	ld	(bankm),a
-	out	(c),a
-	pop	af
-	ret
+    di
+    push    af
+    ld  bc, CMR0
+    ld  a,(bankm)
+    set 4,a
+    and #0f8
+    ld  (bankm),a
+    out (c),a
+    pop af
+    ret
 
 dos_error db 13, "DOS OPERATION ERROR!", 13, 0
